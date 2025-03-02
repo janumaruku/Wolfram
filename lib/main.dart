@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wolfram/main_data.dart';
 
 import 'menu.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => MainData(),
+      child: const MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -49,7 +57,7 @@ class HomePageState extends State<HomePage> {
                   curve: Curves.easeInOut,
                   width: isMenuOpen ? 250 : 0,
                   alignment: Alignment.topCenter,
-                  child: isMenuOpen ? const CustomSideMenu() : const SizedBox.shrink(),
+                  child: isMenuOpen ? CustomSideMenu() : const SizedBox.shrink(),
                 ),
                 // Main content
                 const Expanded(
